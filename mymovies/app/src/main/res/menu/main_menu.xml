@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itBuscar"
+        android:title="BUSCAR" />
+    <item
+        android:id="@+id/itConfig"
+        android:title="CONFIGURAÇÕES" />
+</menu>
