@@ -65,6 +65,13 @@ public class BuscaFragment extends Fragment {
         listView = view.findViewById(R.id.listView);
         etFiltro = view.findViewById(R.id.etFiltro);
 
+        listView.setOnItemClickListener((parent, view1, position, id) -> {
+            Movie selectedMovie = filmes.get(position);
+
+            // Abrir o fragmento de detalhes
+            openMovieDetail(selectedMovie);
+        });
+
         etFiltro.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -87,6 +94,20 @@ public class BuscaFragment extends Fragment {
 
     public void carregarMovies(){
         listView.setAdapter(new MovieAdapter(getActivity(), R.layout.item_movie, filmes));
+    }
+
+    private void openMovieDetail(Movie movie) {
+        MovieDetailFragment detailFragment = MovieDetailFragment.newInstance(
+                movie.title,
+                movie.genres,
+                movie.thumbnail
+        );
+
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.detailfragment, detailFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void consumirApi() {
