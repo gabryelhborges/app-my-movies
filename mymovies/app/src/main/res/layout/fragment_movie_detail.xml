@@ -8,10 +8,19 @@
     tools:context=".MovieDetailFragment">
 
     <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="408dp"
+        android:layout_height="654dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
         android:id="@+id/ivPoster"
         android:layout_width="318dp"
         android:layout_height="152dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Titulo"
+        android:textColor="#FDFDFD"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="generos"
+        android:textColor="#F8F8F8"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="53dp"
         android:text="Ano"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.443"
@@ -56,7 +68,23 @@
         android:id="@+id/ivRetornar"
         android:layout_width="41dp"
         android:layout_height="45dp"
+        android:layout_marginTop="110dp"
+        android:background="#FBFBFB"
         android:src="@drawable/icons8_retornar_64"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descricao"
+        android:textColor="#FDFDFD"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/tvGeneros"
+        app:layout_constraintVertical_bias="0.206"
+        tools:layout_editor_absoluteX="174dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

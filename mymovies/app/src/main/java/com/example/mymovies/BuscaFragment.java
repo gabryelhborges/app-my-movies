@@ -68,8 +68,21 @@ public class BuscaFragment extends Fragment {
         listView.setOnItemClickListener((parent, view1, position, id) -> {
             Movie selectedMovie = filmes.get(position);
 
-            // Abrir o fragmento de detalhes
-            openMovieDetail(selectedMovie);
+            // Criar uma nova instância do MovieDetailFragment com os argumentos do filme
+            MovieDetailFragment detailFragment = MovieDetailFragment.newInstance(
+                    selectedMovie.title,
+                    ""+selectedMovie.year,
+                    selectedMovie.genres,
+                    selectedMovie.thumbnail,
+                    selectedMovie.extract
+            );
+
+            // Realizar a transação para substituir o fragmento atual
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(android.R.id.content, detailFragment) // Substitui o layout atual pelo fragmento
+                    .addToBackStack(null) // Adiciona à pilha para permitir voltar
+                    .commit();
         });
 
         etFiltro.addTextChangedListener(new TextWatcher() {
@@ -99,8 +112,10 @@ public class BuscaFragment extends Fragment {
     private void openMovieDetail(Movie movie) {
         MovieDetailFragment detailFragment = MovieDetailFragment.newInstance(
                 movie.title,
+                ""+movie.year,
                 movie.genres,
-                movie.thumbnail
+                movie.thumbnail,
+                movie.extract
         );
 
         requireActivity().getSupportFragmentManager()

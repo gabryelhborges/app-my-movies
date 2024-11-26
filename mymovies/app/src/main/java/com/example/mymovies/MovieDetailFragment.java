@@ -31,7 +31,7 @@ public class MovieDetailFragment extends Fragment {
     private String mParam2;
 
     private ImageView ivPoster, ivRetornar;
-    private TextView tvTitulo, tvGeneros, tvAno;
+    private TextView tvTitulo, tvGeneros, tvAno, tvDescricao;
 
     public MovieDetailFragment() {
         // Required empty public constructor
@@ -54,12 +54,14 @@ public class MovieDetailFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    public static MovieDetailFragment newInstance(String title, ArrayList<String> genres, String posterUrl) {
+    public static MovieDetailFragment newInstance(String title, String year, ArrayList<String> genres, String posterUrl, String extract) {
         MovieDetailFragment fragment = new MovieDetailFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
+        args.putString("ano",year);
         args.putStringArrayList("genres", genres);
         args.putString("posterUrl", posterUrl);
+        args.putString("extract", extract);
         fragment.setArguments(args);
         return fragment;
     }
@@ -84,17 +86,24 @@ public class MovieDetailFragment extends Fragment {
         tvTitulo = view.findViewById(R.id.tvTitulo);
         tvGeneros = view.findViewById(R.id.tvGeneros);
         tvAno = view.findViewById(R.id.tvAno);
+        tvDescricao = view.findViewById(R.id.tvDescricao);
 
-        ivRetornar.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
+        ivRetornar.setOnClickListener(v ->
+                requireActivity().getSupportFragmentManager().popBackStack()
+        );
 
         // Recuperar argumentos e configurar os elementos de UI
         if (getArguments() != null) {
             String title = getArguments().getString("title");
             ArrayList<String> genres = getArguments().getStringArrayList("genres");
             String posterUrl = getArguments().getString("posterUrl");
+            String ano = getArguments().getString("ano");
+            String descricao = getArguments().getString("extract");
 
             tvTitulo.setText(title);
             tvGeneros.setText(String.join(", ", genres));
+            tvAno.setText(ano);
+            tvDescricao.setText(descricao);
 
             // Carregar a imagem no ImageView usando Glide
             Glide.with(this)
