@@ -7,7 +7,7 @@ public class RetrofitConfig {
     private final Retrofit retrofit;
 
     public RetrofitConfig() {
-        retrofit = new Retrofit.Builder().baseUrl("http://192.168.15.10:8080").// TODO: !!!ATENÇÃO!!! Altere para o IP da sua máquina EX: "http://000.000.00.00:8080"
+        retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080").// TODO: !!!ATENÇÃO!!! Altere para o IP da sua máquina EX: "http://000.000.00.00:8080"
                 addConverterFactory(GsonConverterFactory.create()).build();
     }
 
